@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北欧艺术生能成为我的恋人吗？</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 100px;
+            background-color: pink;
+            color: white;
+            position: relative;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        button {
+            font-size: 22px;
+            padding: 12px 35px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid white;
+        }
+        /* “可以”按钮样式 */
+        #yesBtn {
+            background: linear-gradient(to right, #ff80ab, #ff4081);
+            color: white;
+        }
+        #yesBtn:hover {
+            background: linear-gradient(to right, #ff4f8a, #ff2061);
+        }
+        /* “不要”按钮样式 */
+        #noBtn {
+            background: linear-gradient(to right, #9575cd, #673ab7);
+            color: white;
+            position: relative; /* 默认不移动 */
+        }
+        #noBtn:hover {
+            background: linear-gradient(to right, #7e5bbd, #542ea7);
+        }
+        #imageContainer {
+            display: none;
+            margin-top: 20px;
+        }
+        #imageContainer img {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>北欧艺术生能成为我的恋人吗？</h2>
+
+    <div class="button-container">
+        <button id="yesBtn">可以</button>
+        <button id="noBtn">不要</button>
+    </div>
+
+    <div id="imageContainer">
+        <img id="displayImage" src="" alt="显示的图片">
+    </div>
+
+    <script>
+        let firstClick = true; // 记录“不要”按钮是否被第一次点击
+
+        document.getElementById("yesBtn").addEventListener("click", function() {
+            let happyImageUrl = "https://i.postimg.cc/QCpdcbrj/be2bab7f35a9a0d9c9948485c6ea89e.jpg"; 
+
+            document.getElementById("displayImage").src = happyImageUrl;
+            document.getElementById("imageContainer").style.display = "block";
+
+            document.getElementById("yesBtn").disabled = true;
+            document.getElementById("noBtn").disabled = true;
+        });
+
+        document.getElementById("noBtn").addEventListener("click", function() {
+            if (firstClick) {
+                firstClick = false; // 允许之后的点击让按钮移动
+                return;
+            }
+
+            let newX = Math.random() * (window.innerWidth - 100);
+            let newY = Math.random() * (window.innerHeight - 50);
+            this.style.position = "absolute";
+            this.style.left = `${newX}px`;
+            this.style.top = `${newY}px`;
+        });
+    </script>
+
+</body>
+</html>
